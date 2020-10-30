@@ -13,21 +13,34 @@
 
 // possible varibles
 
-    var timer = 90;
+
+
+    var secondsLeft = 90;
 
     var score;
 
     var leaderboard;
 
-    var 
+    var timerEl = document.getElementsByClassName('timer');
+
 
     var startQuiz = document.getElementById("startQuiz");
 
-    startQuiz.addEventListener("click", function() {
+    
+    function setTime() {
+        var timerCountdown = setInterval(function() {
+            secondsLeft--;
+            timerEl.textContent = secondsLeft + " seconds left before quiz ends!";
 
-
-    });
-
+            if(secondsLeft === 0) {
+                clearInterval(timerCountdown);
+                sendMessage();
+            }
+        }, 1000);
+    };
+    
+    setTime();
+    startQuiz.addEventListener("click", setTime());
 
     var questions = [
 
