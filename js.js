@@ -1,12 +1,32 @@
 //Need to create arrays as shown in class to form questions with objects
 // need objects in my arrays
-//need to create a few buttons and event.listerner(click, funnction)
+//need to create a few buttons and event.listerner(click, function)
 // if the answer is right the event.listener will call up a function that will make text reveal to show that you are correct and same thing goes for wrong answer
 // not only will it reveal answer it will then keep score and proceed to next question. must clear questions before this tho. done this in excercises today on 10/29 in activity on
 // five questions will be the max done
-// also on top of revealing the answer, it will clear
+// as well as revealing the answer, it will clear the question and prompt the next
 // below i copied an example of how I want my questions given to use from an excericse on 10/28 in activity 33- QUestion game
+// variables are going to be needed for a timer, leaderboard, each element (document.getElementbyId), body, .createElements  
+//wrong answers take away from timer
+//a function that will take away time from timer will begin on button click of start quiz
 
+
+// possible varibles
+
+    var timer = 90;
+
+    var score;
+
+    var leaderboard;
+
+    var 
+
+    var startQuiz = document.getElementById("startQuiz");
+
+    startQuiz.addEventListener("click", function() {
+
+
+    });
 
 
     var questions = [
@@ -19,9 +39,9 @@
         },   
 
         {
-            q: "Which of these plays is the is the longest produced by Shakespeare?",
+            q: "Which of these plays is the is the longest play produced by Shakespeare?",
 
-            qc: ["Hamlet", "Romeo an Juliet", "Juluis Cesar", "Macbeth"],
+            qc: ["Hamlet", "Romeo and Juliet", "Juluis Cesar", "Macbeth"],
 
             a: "Hamlet"
         },
@@ -63,6 +83,7 @@
         } else {
             alert("Wrong!");
         }
+    };
 
 
 // var questions = [
@@ -89,12 +110,13 @@
 //      }
 //  ]
 
- for (var i = 0; i < questions.length; i++) {
-     var answers = prompt(questions[i].q)
-     console.log(answers);
+//  for (var i = 0; i < questions.length; i++) {
+//      var answers = prompt(questions[i].q)
+//      console.log(answers);
 
-     if (answers === questions[i].a) {
-         alert("Correct!");
-     } else {
-         alert("Wrong!");
-     }
+//      if (answers === questions[i].a) {
+//          alert("Correct!");
+//      } else {
+//          alert("Wrong!");
+//      }
+//  }
