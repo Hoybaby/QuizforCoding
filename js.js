@@ -21,7 +21,7 @@
 
     var leaderboard;
 
-    var timerEl = document.getElementsByClassName('timer');
+    var timerEl = document.querySelector('.timer');
 
 
     var startQuiz = document.getElementById("startQuiz");
