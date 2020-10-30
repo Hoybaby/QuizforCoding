@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="questions.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-<script src="js.js"></script>
+    
+
 </head>
 <body>
-    <h1>Quiz</h1>
+    <div id="start">  
+        <h1>Quiz</h1>
     <p> You have 90 seconds to complete this multi-topic quiz. 
         It covers a range of topics. </p>
-    <h1 class="timer"></h1>    
-    <button id="startQuiz">Start Quiz</button>
+    <h2 id="timer"></h2>   
+        <div class="startQuiz"></div>
+    <button>Start Quiz</button>
     </p>
 
-
+    </div>
     
+
+    <div id="quiz" style="display:none"></div>
+    <script src="js.js"></script>
+
+  
 </body>
 </html>

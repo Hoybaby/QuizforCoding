@@ -9,7 +9,7 @@
 // variables are going to be needed for a timer, leaderboard, each element (document.getElementbyId), body, .createElements  
 //wrong answers take away from timer
 //a function that will take away time from timer will begin on button click of start quiz
-
+// when we click the start button, we need to hide the first div to to start the quiz then show the timer than show the questions
 
 // possible varibles
 
@@ -21,82 +21,102 @@
 
     var leaderboard;
 
-    var timerEl = document.querySelector('.timer');
+    var quiz = document.getElementById("quiz");
+    var timerEl = document.getElementById("timer");
+    var start = document.getElementById("start");
 
 
-    var startQuiz = document.getElementById("startQuiz");
+    start.addEventListener("click", quiz());
+
+    
+    function startQuiz() {
+        start.style.display = "none";
+        renderQuestion()
+
+    }
+    function renderQuestion() {
+        //we need to put diplays the questions
+        
+    }
 
     
     function setTime() {
-        var timerCountdown = setInterval(function() {
-            secondsLeft--;
+
+        
+        // timerID = setInterval(clockTick, 1000);
+
+        //timerEl.textContent = secondsLeft + " second left before quez terminates!"
+        var timerID = setInterval(function() {
+            secondsLeft--; 
             timerEl.textContent = secondsLeft + " seconds left before quiz ends!";
 
             if(secondsLeft === 0) {
-                clearInterval(timerCountdown);
+                clearInterval(timerID);
                 sendMessage();
             }
-        }, 1000);
+        }, 1000); 
+        console.log(timerEl);
     };
+
     
-    setTime();
-    startQuiz.addEventListener("click", setTime());
 
-    var questions = [
+    
+    
+    // var questions = [
 
-        {   q: "Who won the Superbowl in 2019?",
+    //     {   q: "Who won the Superbowl in 2019?",
 
-            qc: ["San Francisco 49ers", "New England Patriots", "Kansas City Chiefs", "Green Bay Packers"],
+    //         qc: ["San Francisco 49ers", "New England Patriots", "Kansas City Chiefs", "Green Bay Packers"],
 
-            a: "Kansas City Chiefs"
-        },   
+    //         a: "Kansas City Chiefs"
+    //     },   
 
-        {
-            q: "Which of these plays is the is the longest play produced by Shakespeare?",
+    //     {
+    //         q: "Which of these plays is the is the longest play produced by Shakespeare?",
 
-            qc: ["Hamlet", "Romeo and Juliet", "Juluis Cesar", "Macbeth"],
+    //         qc: ["Hamlet", "Romeo and Juliet", "Juluis Cesar", "Macbeth"],
 
-            a: "Hamlet"
-        },
+    //         a: "Hamlet"
+    //     },
 
-        {
-            q: "What is the name of the first female astronaut?",
+    //     {
+    //         q: "What is the name of the first female astronaut?",
 
-            qc: ["Sandra Bullock", "Sally K. Ride", "Anne Hathaway", "Katherine Johnson" ],
+    //         qc: ["Sandra Bullock", "Sally K. Ride", "Anne Hathaway", "Katherine Johnson" ],
 
-            a: "Sally K. Ride"
+    //         a: "Sally K. Ride"
             
-        },
+    //     },
 
-        {
-            q: "What nation won the 2018 FIFA World Cup?",
+    //     {
+    //         q: "What nation won the 2018 FIFA World Cup?",
 
-            qc: ["Brazil", "Germany", "France", "Belgium"],
+    //         qc: ["Brazil", "Germany", "France", "Belgium"],
 
-            a: "France"
-        },
+    //         a: "France"
+    //     },
 
-        {
-            q: "Which mammal doesn't have vocal cords?",
+    //     {
+    //         q: "Which mammal doesn't have vocal cords?",
 
-            qc: ["Sloth", "Giant Anteater", "Giraffe", "Pangolin"],
+    //         qc: ["Sloth", "Giant Anteater", "Giraffe", "Pangolin"],
 
-            a: "Giraffe"
-        }
+    //         a: "Giraffe"
+    //     }
 
-    ]
+    // ]
 
 
-    for (var i = 0; i < questions.length; i++) {
-        var answers = prompt(questions[i].q)
-        console.log(answers);
+    // for (var i = 0; i < questions.length; i++) {
+    //     var answers = prompt(questions[i].q)
+    //     console.log(answers);
    
-        if (answers === questions[i].a) {
-            alert("Correct!");
-        } else {
-            alert("Wrong!");
-        }
-    };
+    //     if (answers === questions[i].a) {
+    //         alert("Correct!");
+    //     } else {
+    //         alert("Wrong!");
+    //     }
+    // };
 
 
 // var questions = [
