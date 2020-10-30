@@ -24,26 +24,59 @@
     var quiz = document.getElementById("quiz");
     var timerEl = document.getElementById("timer");
     var start = document.getElementById("start");
+    var 
 
-
-    start.addEventListener("click", quiz());
+    start.addEventListener("click", startQuiz);
 
     
     function startQuiz() {
         start.style.display = "none";
-        renderQuestion()
-
+        renderQuestions();
+        //need to show the quiz. below will do it
+        quiz.style.display = "block";
+        //need to show timer
+        setTime();
     }
-    function renderQuestion() {
-        //we need to put diplays the questions
-        
+
+    function init(x) {
+        return document.getElementById(x);
     }
 
-    
-    function setTime() {
 
+    function renderQuestions() {
+        test = init("test")
+        if (index >= questions.length) {
+            test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
+            init("renderQuestions").innerHTML = "All Done";
+            var index = 0;
+            var correct = 0;
+            return false
+            //any iinenr html needs equals
+        }
+        init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
+        question = questions[index][0];
         
-        // timerID = setInterval(clockTick, 1000);
+        
+        
+        //we are plus one because we want to show a new index which is all teh qesutiosmn
+
+        //we ned to create a atest id . wneed to di <div id= test"
+        //we need to show the questions by id
+
+        // we need to put diplays the questions
+        // for (var i = 0; i < questions.length; i++) {
+        //     var answers = prompt(questions[i].q)
+        //     console.log(answers);
+       
+    //         if (answers === questions[i].a) {
+    //             alert("Correct!");
+    //         } else {
+    //             alert("Wrong!");
+    //         }
+    //     };
+    }
+      function setTime() {
+     // timerID = setInterval(clockTick, 1000);
 
         //timerEl.textContent = secondsLeft + " second left before quez terminates!"
         var timerID = setInterval(function() {
@@ -107,19 +140,19 @@
     // ]
 
 
-    // for (var i = 0; i < questions.length; i++) {
-    //     var answers = prompt(questions[i].q)
-    //     console.log(answers);
+//     for (var i = 0; i < questions.length; i++) {
+//         var answers = prompt(questions[i].q)
+//         console.log(answers);
    
-    //     if (answers === questions[i].a) {
-    //         alert("Correct!");
-    //     } else {
-    //         alert("Wrong!");
-    //     }
-    // };
+//         if (answers === questions[i].a) {
+//             alert("Correct!");
+//         } else {
+//             alert("Wrong!");
+//         }
+//     };
 
 
-// var questions = [
+// // var questions = [
 //     {    q: "Is there 14 inches in a foot?", 
 //          a: "No"
     
