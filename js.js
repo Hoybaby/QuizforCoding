@@ -47,7 +47,7 @@
         const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
         container.appendChild(questionEl) //we appeneded
     }
-
+    //renderquestion is reponsible for creating for building html rep of a question
     function renderQuestion(title, choices, answer) {
         const template = document.getElementById("test");
         const question = template.cloneNode(true);
@@ -71,14 +71,21 @@
                     }
                 
             })
-            
-            
-            choicesEl.appendChild(li)
-            
+            choicesEl.appendChild(li) 
         })
         console.log(question)
         return question;
     }
+
+    //Have to figure out how to rotate questions through.
+    // assign point values to right answers
+    // keep score
+    // make highscore html page work right with local storage
+    //need 4th variable in renderquestion as a call back function
+
+
+
+
 // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
         // questions = questions[index][0];
         //we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
