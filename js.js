@@ -33,21 +33,19 @@
     
     function startQuiz() {
         start.style.display = "none";
+        
         //need to show the quiz. below will do it
         quiz.style.display = "block";
         //need to show timer
         setTime();
         renderQuestions();
     }
-    // we moved the information startQuiz to renderQuestions. Making the logic a litle more sound
-    
+
     function renderQuestions() {
         const question = questions[0]; //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
-
         const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
         const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
         container.appendChild(questionEl) //we appeneded
-        
     }
 
     function renderQuestion(title, choices, answer) {
