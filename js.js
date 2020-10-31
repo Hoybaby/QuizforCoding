@@ -24,15 +24,16 @@
     var quiz = document.getElementById("quiz");
     var timerEl = document.getElementById("timer");
     var start = document.getElementById("start");
-    
+    var startButton = document.getElementById("startButton");
+   
 
 
-    start.addEventListener("click", startQuiz) 
+    startButton.addEventListener("click", startQuiz) 
 
     
     function startQuiz() {
         start.style.display = "none";
-        renderQuestions();
+        // renderQuestions();
         //need to show the quiz. below will do it
         quiz.style.display = "block";
         //need to show timer
@@ -55,7 +56,7 @@
             //any iinenr html needs equals
         }
         init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
-        question = questions[index][0];
+        questions = questions[index][0];
         
         
 
