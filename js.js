@@ -33,7 +33,7 @@
     
     function startQuiz() {
         start.style.display = "none";
-        // renderQuestions();
+        renderQuestions();
         //need to show the quiz. below will do it
         quiz.style.display = "block";
         //need to show timer
@@ -46,17 +46,19 @@
 
 
     function renderQuestions() {
-        test = init("test")
-        if (index >= questions.length) {
-            test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
-            init("renderQuestions").innerHTML = "All Done";
-            var index = 0;
-            var correct = 0;
-            return false
-            //any iinenr html needs equals
-        }
-        init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
-        questions = questions[index][0];
+
+        console.log("test")
+        // test = init("test")
+        // if (index >= questions.length) {
+        //     test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
+        //     init("renderQuestions").innerHTML = "All Done";
+        //     var index = 0;
+        //     var correct = 0;
+        //     return false
+        //     //any iinenr html needs equals
+        // }
+        // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
+        // questions = questions[index][0];
         
         
 
@@ -142,16 +144,16 @@
     // ]
 
 
-//     for (var i = 0; i < questions.length; i++) {
-//         var answers = prompt(questions[i].q)
-//         console.log(answers);
+    // for (var i = 0; i < questions.length; i++) {
+    //     var answers = prompt(questions[i].q)
+    //     console.log(answers);
    
-//         if (answers === questions[i].a) {
-//             alert("Correct!");
-//         } else {
-//             alert("Wrong!");
-//         }
-//     };
+    //     if (answers === questions[i].a) {
+    //         alert("Correct!");
+    //     } else {
+    //         alert("Wrong!");
+    //     }
+    // };
 
 
 // // var questions = [
