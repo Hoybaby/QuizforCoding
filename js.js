@@ -33,7 +33,7 @@
     
     function startQuiz() {
         start.style.display = "none";
-        renderQuestions();
+        renderQuestion();
         //need to show the quiz. below will do it
         quiz.style.display = "block";
         //need to show timer
@@ -45,14 +45,22 @@
     }
 
 
-    function renderQuestions() {
+    function renderQuestion(title, choices, answer) {
 
         console.log("test")
         const template = document.getElementById("test");
         let question = template.cloneNode(true);
-
+        question.style.display = "block";
+        question.removeAttribute("id");
+        
         console.log(question)
         //we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
+        //remove the id to avoid collison later
+        //remove style display none cloned element 
+        // want to update h1 element text value with a title
+        //add a child per question as an li inside the ol. will be using appendChild
+        
+
 
         // test = init("test")
         // if (index >= questions.length) {

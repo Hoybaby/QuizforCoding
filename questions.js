@@ -1,43 +1,43 @@
 var questions = [
 
-    {   q: "Who won the Superbowl in 2019?",
+    {   title: "Who won the Superbowl in 2019?",
 
-        qc: ["San Francisco 49ers", "New England Patriots", "Kansas City Chiefs", "Green Bay Packers"],
+        choices: ["San Francisco 49ers", "New England Patriots", "Kansas City Chiefs", "Green Bay Packers"],
 
-        a: "Kansas City Chiefs"
+        answer: "Kansas City Chiefs"
     },   
 
     {
-        q: "Which of these plays is the is the longest play produced by Shakespeare?",
+        title: "Which of these plays is the is the longest play produced by Shakespeare?",
 
-        qc: ["Hamlet", "Romeo and Juliet", "Juluis Cesar", "Macbeth"],
+        choices: ["Hamlet", "Romeo and Juliet", "Juluis Cesar", "Macbeth"],
 
-        a: "Hamlet"
+        answer: "Hamlet"
     },
 
     {
-        q: "What is the name of the first female astronaut?",
+        title: "What is the name of the first female astronaut?",
 
-        qc: ["Sandra Bullock", "Sally K. Ride", "Anne Hathaway", "Katherine Johnson" ],
+        choices: ["Sandra Bullock", "Sally K. Ride", "Anne Hathaway", "Katherine Johnson" ],
 
-        a: "Sally K. Ride"
+        answer: "Sally K. Ride"
         
     },
 
     {
-        q: "What nation won the 2018 FIFA World Cup?",
+        title: "What nation won the 2018 FIFA World Cup?",
 
-        qc: ["Brazil", "Germany", "France", "Belgium"],
+        choices:["Brazil", "Germany", "France", "Belgium"],
 
-        a: "France"
+        answer:"France"
     },
 
     {
-        q: "Which mammal doesn't have vocal cords?",
+        title: "Which mammal doesn't have vocal cords?",
 
-        qc: ["Sloth", "Giant Anteater", "Giraffe", "Pangolin"],
+        choices:: ["Sloth", "Giant Anteater", "Giraffe", "Pangolin"],
 
-        a: "Giraffe"
+        answer: "Giraffe"
     }
 
 ]
