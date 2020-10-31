@@ -33,20 +33,22 @@
     
     function startQuiz() {
         start.style.display = "none";
-        const question = questions[0]; //to ease dubugging
-
-        renderQuestion(question.title, question.choices, question.answer);
-        const container = document.getElementById("questionContainer");
         //need to show the quiz. below will do it
         quiz.style.display = "block";
         //need to show timer
         setTime();
+        renderQuestions();
     }
+    // we moved the information startQuiz to renderQuestions. Making the logic a litle more sound
+    
+    function renderQuestions() {
+        const question = questions[0]; //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
 
-    function init(x) {
-        return document.getElementById(x);
+        const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
+        const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
+        container.appendChild(questionEl) //we appeneded
+        
     }
-
 
     function renderQuestion(title, choices, answer) {
         const template = document.getElementById("test");
@@ -64,6 +66,12 @@
             li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
             li.addEventListener("click", function(evt) {
                 console.log("choice was clicked", choice)
+                if (choice === answer) {
+                    console.log("correct")
+                } else {
+                        console.log('wrong');
+                    }
+                
             })
             
             
@@ -73,7 +81,8 @@
         console.log(question)
         return question;
     }
-
+// init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
+        // questions = questions[index][0];
         //we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
         //remove the id to avoid collison later
         //remove style display none cloned element 
@@ -91,8 +100,7 @@
         //     return false
         //     //any iinenr html needs equals
         // }
-        // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
-        // questions = questions[index][0];
+        // 
         
         
 
