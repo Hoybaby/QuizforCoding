@@ -48,6 +48,12 @@
     function renderQuestions() {
 
         console.log("test")
+        const template = document.getElementById("test");
+        let question = template.cloneNode(true);
+
+        console.log(question)
+        //we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
+
         // test = init("test")
         // if (index >= questions.length) {
         //     test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
