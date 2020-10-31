@@ -35,7 +35,7 @@ var questions = [
     {
         title: "Which mammal doesn't have vocal cords?",
 
-        choices:: ["Sloth", "Giant Anteater", "Giraffe", "Pangolin"],
+        choices:["Sloth", "Giant Anteater", "Giraffe", "Pangolin"],
 
         answer: "Giraffe"
     }

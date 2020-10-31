@@ -33,7 +33,10 @@
     
     function startQuiz() {
         start.style.display = "none";
-        renderQuestion();
+        const question = questions[0]; //to ease dubugging
+
+        renderQuestion(question.title, question.choices, question.answer);
+        const container = document.getElementById("questionContainer");
         //need to show the quiz. below will do it
         quiz.style.display = "block";
         //need to show timer
@@ -46,14 +49,31 @@
 
 
     function renderQuestion(title, choices, answer) {
-
-        console.log("test")
         const template = document.getElementById("test");
-        let question = template.cloneNode(true);
+        const question = template.cloneNode(true);
         question.style.display = "block";
         question.removeAttribute("id");
+        // labeling all variables const because they are not being reassigned. better practice to rename them const then variable. start sooner naming
+        const titleEl = question.getElementsByTagName("h1")[0];
+        titleEl.innerHTML = title;
+
+        const choicesEl = question.getElementsByTagName("ol")[0];
         
+        choices.forEach(function(choice) {          //the forEach is a loop
+            const li = document.createElement("li")
+            li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
+            li.addEventListener("click", function(evt) {
+                console.log("choice was clicked", choice)
+            })
+            
+            
+            choicesEl.appendChild(li)
+            
+        })
         console.log(question)
+        return question;
+    }
+
         //we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
         //remove the id to avoid collison later
         //remove style display none cloned element 
@@ -92,7 +112,7 @@
     //             alert("Wrong!");
     //         }
     //     };
-    }
+   
       function setTime() {
      // timerID = setInterval(clockTick, 1000);
 
