@@ -46,7 +46,16 @@
         const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
         const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
         container.appendChild(questionEl) //we appeneded
-    }
+        // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
+//         questions = questions[index][0];
+    //   for (var i = 0; i < questions.length; i++) {
+        
+    //     var userQuestion = questions[questionIndex].title;
+    //     let choices = questions[questionIndex].choices;
+    //     questionsDiv.textContent = userQuestion;
+    //     };
+
+    };
     //renderquestion is reponsible for creating for building html rep of a question
     function renderQuestion(title, choices, answer) {
         const template = document.getElementById("test");
@@ -65,7 +74,8 @@
             li.addEventListener("click", function(evt) {
                 // console.log("choice was clicked", choice)
                 if (choice === answer) {
-                    alert("correct")
+                    alert("correct");
+                    score++;
                 } else {
                         alert('wrong');
                     }
@@ -110,7 +120,7 @@ function sendMessage() {
         //     return false
         //     //any iinenr html needs equals
         // }
-        // 
+        
     //Have to figure out how to rotate questions through.
     // assign point values to right answers
     // keep score
@@ -119,7 +129,7 @@ function sendMessage() {
 
 
 
-
+//have to figure out where ti place this 
 // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
 //         questions = questions[index][0];
         // we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
@@ -143,12 +153,12 @@ function sendMessage() {
         //     var answers = prompt(questions[i].q)
         //     console.log(answers);
        
-    //         if (answers === questions[i].a) {
-    //             alert("Correct!");
-    //         } else {
-    //             alert("Wrong!");
-    //         }
-    //     };
+        //     if (answers === questions[i].a) {
+        //         alert("Correct!");
+        //     } else {
+        //         alert("Wrong!");
+        //     }
+        // };
    
    
     
