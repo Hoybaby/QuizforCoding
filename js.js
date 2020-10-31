@@ -65,9 +65,9 @@
             li.addEventListener("click", function(evt) {
                 console.log("choice was clicked", choice)
                 if (choice === answer) {
-                    console.log("correct")
+                    alert("correct")
                 } else {
-                        console.log('wrong');
+                        alert('wrong');
                     }
                 
             })
