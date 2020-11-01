@@ -50,8 +50,14 @@
         }
     }
 
+
+    function clearTest() {
+        console.log("About to clear html");
+        document.getElementById("test").innerHTML = "";
+    }
+
     function renderQuestions() {
-        const question = questions[0]; //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
+        let question = questions[index]; //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
         const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
         const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
         container.appendChild(questionEl) //we appeneded
@@ -85,8 +91,9 @@
                 if (choice === answer) {
                     alert("correct");
                     score++;
-                    const question = questions[1]
-                    const questionEl = renderQuestion(question.title, question.choices, question.answer)
+                    index = index +1
+                    // const question = questions[1]
+                    // const questionEl = renderQuestion(question.title, question.choices, question.answer)
                     
                 } else {
                         alert('wrong');
@@ -94,10 +101,19 @@
                 
             })
             choicesEl.appendChild(li) 
+            // clearTest();
+            // renderQuestion();
         })
         console.log(question)
         return question;
+
     };
+
+
+    function nextQuestion () {
+        clearTest();
+        
+    }
 
     function setTime() {
      // timerID = setInterval(clockTick, 1000);
