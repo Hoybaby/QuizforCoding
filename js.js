@@ -59,7 +59,7 @@
     function renderQuestions() {
         let question = questions[index]; //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
         const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
-        const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
+        // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
         container.appendChild(questionEl) //we appeneded
         // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
 //         questions = questions[index][0];
@@ -72,47 +72,47 @@
 
     };
     //renderquestion is reponsible for creating for building html rep of a question
-    function renderQuestion(title, choices, answer) {
-        const template = document.getElementById("test");
-        const question = template.cloneNode(true);
-        question.style.display = "block";
-        question.removeAttribute("id");
-        // labeling all variables const because they are not being reassigned. better practice to rename them const then variable. start sooner naming
-        const titleEl = question.getElementsByTagName("h1")[0];
-        titleEl.innerHTML = title;
+    // function renderQuestion(title, choices, answer) {
+    //     const template = document.getElementById("test");
+    //     const question = template.cloneNode(true);
+    //     question.style.display = "block";
+    //     question.removeAttribute("id");
+    //     // labeling all variables const because they are not being reassigned. better practice to rename them const then variable. start sooner naming
+    //     const titleEl = question.getElementsByTagName("h1")[0];
+    //     titleEl.innerHTML = title;
 
-        const choicesEl = question.getElementsByTagName("ol")[0];
+    //     const choicesEl = question.getElementsByTagName("ol")[0];
         
-        choices.forEach(function(choice) {          //the forEach is a loop
-            const li = document.createElement("li")
-            li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
-            li.addEventListener("click", function(evt) {
-                // console.log("choice was clicked", choice)
-                if (choice === answer) {
-                    alert("correct");
-                    score++;
-                    index = index +1
-                    // const question = questions[1]
-                    // const questionEl = renderQuestion(question.title, question.choices, question.answer)
+    //     choices.forEach(function(choice) {          //the forEach is a loop
+    //         const li = document.createElement("li")
+    //         li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
+    //         li.addEventListener("click", function(evt) {
+    //             // console.log("choice was clicked", choice)
+    //             if (choice === answer) {
+    //                 alert("correct");
+    //                 score++;
+    //                 index = index +1
+    //                 // const question = questions[1]
+    //                 // const questionEl = renderQuestion(question.title, question.choices, question.answer)
                     
-                } else {
-                        alert('wrong');
-                    }
+    //             } else {
+    //                     alert('wrong');
+    //                 }
                 
-            })
-            choicesEl.appendChild(li) 
-            // clearTest();
-            // renderQuestion();
-        })
-        console.log(question)
-        return question;
+    //         })
+    //         choicesEl.appendChild(li) 
+    //         // clearTest();
+    //         // renderQuestion();
+    //     })
+    //     console.log(question)
+    //     return question;
 
-    };
+    // };
 
 
     function nextQuestion () {
         clearTest();
-        
+
     }
 
     function setTime() {
