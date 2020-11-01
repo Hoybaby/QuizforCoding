@@ -65,3 +65,11 @@ li button:hover {
   margin: 0 auto;
   margin-top: 40px;
 }
+
+#start {
+    text-align: center;
+}
+
+#test {
+    text-align: center;
+}
