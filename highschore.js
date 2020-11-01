@@ -28,3 +28,16 @@ function renderScores() {
 
     }
 }
+
+function init() {
+    // to get stored highscores from the array we create we need to parsing the JSON string to an object
+    var storedScores = JSON.parse(localStorage.getItem("highscores"));
+    // the JSON.parse() methos parses a JSON string, constructing the JS value or object by the string
+
+    if (storedTodos !== null) {
+        highscores = storedScores;
+    }
+    renderScores();
+};
+
+function storeScores
