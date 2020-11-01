@@ -17,7 +17,7 @@
 
     var secondsLeft = 90;
 
-    var score;
+    var score = 0;
     var index = 0;
     var leaderboard;
 
