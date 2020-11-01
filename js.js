@@ -26,9 +26,6 @@
     var start = document.getElementById("start");
     var startButton = document.getElementById("startButton");
     
-   
-
-
     startButton.addEventListener("click", startQuiz) 
 
     
@@ -42,7 +39,7 @@
         renderQuestions();
     }
 
-    function renderQ() {
+    function renderQuestions() {
         var questionsIndexLength = questions.length - 1;
         if (index <= questionsIndexLength) {
             document.getElementById("question").innerHTML = questions[index].title;
@@ -50,27 +47,57 @@
         }
     }
 
-
-    function clearTest() {
+    function renderQuestionsChoices() {
+        let question = questions[index].choices;
+        
+        for (var i = 0; i < questions.length; i++) {
+            var questionOptionsDiv = document.getElementById("question-choices");
+            var questionButtons = document.createElement("button");
+            questionButtons.className =  "btn btnOption btn-outline-primary btn-sm d-flex justify-content-around";
+            questionButtons.innerHTML = question[option];
+            //This fires the check answer function when the user clicks a question choices button
+            questionButtons.setAttribute(
+                "onclick",
+                "checkAnswer(" + index + "," + option + ");"
+            );
+            questionOptionsDiv.append(questionButtons);
+        }
+        // quizOver();
+    };
+        function clearTest() {
         console.log("About to clear html");
         document.getElementById("test").innerHTML = "";
     }
 
-    function renderQuestions() {
-        let question = questions[index]; //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
-        const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
+
+        function checkAnswer(question, answer) {
+
+            console.log("question: ", question);
+            console.log("answer: ", answer);
+            let correctAnswer = questions[question].answer;
+            let userAnswer = questions[question].choices[answer];
+            if (userAnswer == correctAnswer) {
+                index = index + 1;
+                console.log(score);
+                console.log("Coreect");
+            }
+            //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
+            else {
+                index = index + 1
+                secondsLeft = secondsLeft - 15;
+            }
+            clearTest();
+            renderQuestions();
+        }
+        //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
+        // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
         // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
-        container.appendChild(questionEl) //we appeneded
+        // container.appendChild(questionEl) //we appeneded
         // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
 //         questions = questions[index][0];
-    //   for (var i = 0; i < questions.length; i++) {
-        
-    //     var userQuestion = questions[questionIndex].title;
-    //     let choices = questions[questionIndex].choices;
-    //     questionsDiv.textContent = userQuestion;
-    //     };
+    //   };
 
-    };
+    // };
     //renderquestion is reponsible for creating for building html rep of a question
     // function renderQuestion(title, choices, answer) {
     //     const template = document.getElementById("test");
@@ -108,12 +135,6 @@
     //     return question;
 
     // };
-
-
-    function nextQuestion () {
-        clearTest();
-
-    }
 
     function setTime() {
      // timerID = setInterval(clockTick, 1000);
