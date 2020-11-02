@@ -27,8 +27,6 @@
     var startButton = document.getElementById("startButton");
     
     startButton.addEventListener("click", startQuiz) 
-
-    
     function startQuiz() {
         start.style.display = "none";
         
@@ -47,48 +45,48 @@
         }
     }
 
-    function renderQuestionsChoices() {
+    function renderQuestionChoices() {
         let question = questions[index].choices;
         
         for (var i = 0; i < questions.length; i++) {
             var questionOptionsDiv = document.getElementById("question-choices");
             var questionButtons = document.createElement("button");
-            questionButtons.className =  "btn btnOption btn-outline-primary btn-sm d-flex justify-content-around";
-            questionButtons.innerHTML = question[option];
+            questionButtons.className ="btn btnOption btn-outline-primary btn-sm d-flex justify-content-around";
+            questionButtons.innerHTML = question[i];
             //This fires the check answer function when the user clicks a question choices button
             questionButtons.setAttribute(
                 "onclick",
-                "checkAnswer(" + index + "," + option + ");"
+                "checkAnswer(" + index + "," + i + ");"
             );
             questionOptionsDiv.append(questionButtons);
         }
         // quizOver();
     };
-        function clearTest() {
+    function clearQuestionDiv() {
         console.log("About to clear html");
-        document.getElementById("test").innerHTML = "";
+        document.getElementById("question-choices").innerHTML = "";
     }
 
 
-        function checkAnswer(question, answer) {
+    function checkAnswer(question, answer) {
 
-            console.log("question: ", question);
-            console.log("answer: ", answer);
-            let correctAnswer = questions[question].answer;
-            let userAnswer = questions[question].choices[answer];
-            if (userAnswer == correctAnswer) {
-                index = index + 1;
-                console.log(score);
-                console.log("Coreect");
-            }
-            //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
-            else {
-                index = index + 1
-                secondsLeft = secondsLeft - 15;
-            }
-            clearTest();
-            renderQuestions();
+        console.log("question: ", question);
+        console.log("answer: ", answer);
+        let correctAnswer = questions[question].answer;
+        let userAnswer = questions[question].choices[answer];
+        if (userAnswer == correctAnswer) {
+            index = index + 1;
+               console.log(score);
+             console.log("Correct");
         }
+            //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
+        else {
+            index = index + 1
+            secondsLeft = secondsLeft - 15;
+        }
+        clearQuestionDiv();
+        renderQuestions();
+    }
         //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
         // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
         // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
