@@ -15,204 +15,195 @@
 
 
 
-    var secondsLeft = 90;
+var secondsLeft = 90;
 
-    var score = 0;
-    var index = 0;
-    var leaderboard;
+var score = 0;
+var index = 0;
+var leaderboard;
 
-    var quiz = document.getElementById("quiz");
-    var timerEl = document.getElementById("timer");
-    var start = document.getElementById("start");
-    var startButton = document.getElementById("startButton");
+var quiz = document.getElementById("quiz");
+var timerEl = document.getElementById("timer");
+var start = document.getElementById("start");
+var startButton = document.getElementById("startButton");
+
+startButton.addEventListener("click", startQuiz) 
+function startQuiz() {
+    start.style.display = "none";
     
-    startButton.addEventListener("click", startQuiz) 
-    function startQuiz() {
-        start.style.display = "none";
-        
-        //need to show the quiz. below will do it
-        quiz.style.display = "block";
-        //need to show timer
-        setTime();
-        renderQuestions();
+    //need to show the quiz. below will do it
+    quiz.style.display = "block";
+    //need to show timer
+    setTime();
+    renderQuestions();
+}
+
+function renderQuestions() {
+    var questionsIndexLength = questions.length - 1;
+    if (index <= questionsIndexLength) {
+        document.getElementById("question").innerHTML = questions[index].title;
+        renderQuestionChoices();
     }
+}
 
-    function renderQuestions() {
-        var questionsIndexLength = questions.length - 1;
-        if (index <= questionsIndexLength) {
-            document.getElementById("question").innerHTML = questions[index].title;
-            renderQuestionChoices();
-        }
+function renderQuestionChoices() {
+    let question = questions[index].choices;
+    
+    for (var i = 0; i < questions.length; i++) {
+        var questionOptionsDiv = document.getElementById("question-choices");
+        var questionButtons = document.createElement("button");
+        questionButtons.className ="btn btnOption btn-outline-primary btn-sm d-flex justify-content-around";
+        questionButtons.innerHTML = question[i];
+        //This fires the check answer function when the user clicks a question choices button
+        questionButtons.setAttribute(
+            "onclick",
+            "checkAnswer(" + index + "," + i + ");"
+        );
+        questionOptionsDiv.append(questionButtons);
     }
+    // quizOver();
+};
+function clearQuestionDiv() {
+    console.log("About to clear html");
+    document.getElementById("question-choices").innerHTML = "";
+}
 
-    function renderQuestionChoices() {
-        let question = questions[index].choices;
-        
-        for (var i = 0; i < questions.length; i++) {
-            var questionOptionsDiv = document.getElementById("question-choices");
-            var questionButtons = document.createElement("button");
-            questionButtons.className ="btn btnOption btn-outline-primary btn-sm d-flex justify-content-around";
-            questionButtons.innerHTML = question[i];
-            //This fires the check answer function when the user clicks a question choices button
-            questionButtons.setAttribute(
-                "onclick",
-                "checkAnswer(" + index + "," + i + ");"
-            );
-            questionOptionsDiv.append(questionButtons);
-        }
-        // quizOver();
-    };
-    function clearQuestionDiv() {
-        console.log("About to clear html");
-        document.getElementById("question-choices").innerHTML = "";
+
+function checkAnswer(question, answer) {
+
+    console.log("question: ", question);
+    console.log("answer: ", answer);
+    let correctAnswer = questions[question].answer;
+    let userAnswer = questions[question].choices[answer];
+    if (userAnswer == correctAnswer) {
+        index = index + 1;
+        score = score + secondsLeft
+           console.log(score);
+         console.log("Correct");
     }
-
-
-    function checkAnswer(question, answer) {
-
-        var creatDiv = document.getElementById("divAnswer");
-        creatDiv.setAttribute("id", "creatDiv");
-        console.log("question: ", question);
-        console.log("answer: ", answer);
-        let correctAnswer = questions[question].answer;
-        let userAnswer = questions[question].choices[answer];
-        if (userAnswer == correctAnswer) {
-            score = score + secondsLeft
-            index = index + 1;
-            creatDiv.textContent = "Correct!";
-            console.log(score);
-            console.log("Correct");
-        }
-            //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
-        else {
-            index = index + 1
-            secondsLeft = secondsLeft - 15;
-        }
-        clearQuestionDiv();
-        renderQuestions();
+        //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
+    else {
+        index = index + 1
+        secondsLeft = secondsLeft - 15;
     }
-        //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
-        // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
-        // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
-        // container.appendChild(questionEl) //we appeneded
-        // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
+    clearQuestionDiv();
+    renderQuestions();
+}
+    //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
+    // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
+    // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
+    // container.appendChild(questionEl) //we appeneded
+    // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
 //         questions = questions[index][0];
-    //   };
+//   };
 
-    // };
-    //renderquestion is reponsible for creating for building html rep of a question
-    // function renderQuestion(title, choices, answer) {
-    //     const template = document.getElementById("test");
-    //     const question = template.cloneNode(true);
-    //     question.style.display = "block";
-    //     question.removeAttribute("id");
-    //     // labeling all variables const because they are not being reassigned. better practice to rename them const then variable. start sooner naming
-    //     const titleEl = question.getElementsByTagName("h1")[0];
-    //     titleEl.innerHTML = title;
+// };
+//renderquestion is reponsible for creating for building html rep of a question
+// function renderQuestion(title, choices, answer) {
+//     const template = document.getElementById("test");
+//     const question = template.cloneNode(true);
+//     question.style.display = "block";
+//     question.removeAttribute("id");
+//     // labeling all variables const because they are not being reassigned. better practice to rename them const then variable. start sooner naming
+//     const titleEl = question.getElementsByTagName("h1")[0];
+//     titleEl.innerHTML = title;
 
-    //     const choicesEl = question.getElementsByTagName("ol")[0];
-        
-    //     choices.forEach(function(choice) {          //the forEach is a loop
-    //         const li = document.createElement("li")
-    //         li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
-    //         li.addEventListener("click", function(evt) {
-    //             // console.log("choice was clicked", choice)
-    //             if (choice === answer) {
-    //                 alert("correct");
-    //                 score++;
-    //                 index = index +1
-    //                 // const question = questions[1]
-    //                 // const questionEl = renderQuestion(question.title, question.choices, question.answer)
-                    
-    //             } else {
-    //                     alert('wrong');
-    //                 }
+//     const choicesEl = question.getElementsByTagName("ol")[0];
+    
+//     choices.forEach(function(choice) {          //the forEach is a loop
+//         const li = document.createElement("li")
+//         li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
+//         li.addEventListener("click", function(evt) {
+//             // console.log("choice was clicked", choice)
+//             if (choice === answer) {
+//                 alert("correct");
+//                 score++;
+//                 index = index +1
+//                 // const question = questions[1]
+//                 // const questionEl = renderQuestion(question.title, question.choices, question.answer)
                 
-    //         })
-    //         choicesEl.appendChild(li) 
-    //         // clearTest();
-    //         // renderQuestion();
-    //     })
-    //     console.log(question)
-    //     return question;
+//             } else {
+//                     alert('wrong');
+//                 }
+            
+//         })
+//         choicesEl.appendChild(li) 
+//         // clearTest();
+//         // renderQuestion();
+//     })
+//     console.log(question)
+//     return question;
 
-    // };
+// };
 
-    function setTime() {
-     // timerID = setInterval(clockTick, 1000);
+function setTime() {
+ // timerID = setInterval(clockTick, 1000);
 
-        //timerEl.textContent = secondsLeft + " second left before quez terminates!"
-        var timerID = setInterval(function() {
-            secondsLeft--; 
-            timerEl.textContent = secondsLeft + " seconds left before quiz ends!";
+    //timerEl.textContent = secondsLeft + " second left before quez terminates!"
+    var timerID = setInterval(function() {
+        secondsLeft--; 
+        timerEl.textContent = secondsLeft + " seconds left before quiz ends!";
 
-            if(secondsLeft === 0) {
-                clearInterval(timerID);
-                sendMessage();
-            }
-        }, 1000); 
-        console.log(timerEl)
-
-  
-    };
-
-    function sendMessage() {
-    if (secondsLeft === 0) {
-        alert("Time is up. Please Try again!")
+        if(secondsLeft === 0) {
+            clearInterval(timerID);
+            sendMessage();
         }
-    }
+    }, 1000); 
+    console.log(timerEl)
 
-        // test = init("test")
-        // if (index >= questions.length) {
-        //     test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
-        //     init("renderQuestions").innerHTML = "All Done";
-        //     var index = 0;
-        //     var correct = 0;
-        //     return false
-        //     //any iinenr html needs equals
-        // }
-        
-    //Have to figure out how to rotate questions through.
-    // assign point values to right answers
-    // keep score
-    // make highscore html page work right with local storage
-    //need 4th variable in renderquestion as a call back function
+
+};
+
+function sendMessage() {
+if (secondsLeft === 0) {
+    alert("Time is up. Please Try again!")
+    }
+}
+
+    // test = init("test")
+    // if (index >= questions.length) {
+    //     test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
+    //     init("renderQuestions").innerHTML = "All Done";
+    //     var index = 0;
+    //     var correct = 0;
+    //     return false
+    //     //any iinenr html needs equals
+    // }
+    
+//Have to figure out how to rotate questions through.
+// assign point values to right answers
+// keep score
+// make highscore html page work right with local storage
+//need 4th variable in renderquestion as a call back function
 
 
 
 //have to figure out where ti place this 
 // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
 //         questions = questions[index][0];
-        // we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
-        // remove the id to avoid collison later
-        // remove style display none cloned element 
-        // want to update h1 element text value with a title
-        // add a child per question as an li inside the ol. will be using appendChild
-        
-
-
-        
-        
-
-        //we are plus one because we want to show a new index which is all teh qesutiosmn
-
-        //we ned to create a atest id . wneed to di <div id= test"
-        //we need to show the questions by id
-
-        // we need to put diplays the questions
-        // for (var i = 0; i < questions.length; i++) {
-        //     var answers = prompt(questions[i].q)
-        //     console.log(answers);
-       
-        //     if (answers === questions[i].a) {
-        //         alert("Correct!");
-        //     } else {
-        //         alert("Wrong!");
-        //     }
-        // };
-   
-   
+    // we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
+    // remove the id to avoid collison later
+    // remove style display none cloned element 
+    // want to update h1 element text value with a title
+    // add a child per question as an li inside the ol. will be using appendChild
     
 
+
+    
     
 
+    //we are plus one because we want to show a new index which is all teh qesutiosmn
+
+    //we ned to create a atest id . wneed to di <div id= test"
+    //we need to show the questions by id
+
+    // we need to put diplays the questions
+    // for (var i = 0; i < questions.length; i++) {
+    //     var answers = prompt(questions[i].q)
+    //     console.log(answers);
+   
+    //     if (answers === questions[i].a) {
+    //         alert("Correct!");
+    //     } else {
+    //         alert("Wrong!");
+    //     }
+    // };
