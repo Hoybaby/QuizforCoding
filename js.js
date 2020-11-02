@@ -70,14 +70,18 @@
 
     function checkAnswer(question, answer) {
 
+        var creatDiv = document.getElementById("divAnswer");
+        creatDiv.setAttribute("id", "creatDiv");
         console.log("question: ", question);
         console.log("answer: ", answer);
         let correctAnswer = questions[question].answer;
         let userAnswer = questions[question].choices[answer];
         if (userAnswer == correctAnswer) {
+            score = score + secondsLeft
             index = index + 1;
-               console.log(score);
-             console.log("Correct");
+            creatDiv.textContent = "Correct!";
+            console.log(score);
+            console.log("Correct");
         }
             //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
         else {
