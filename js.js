@@ -43,6 +43,10 @@ function renderQuestions() {
         document.getElementById("question").innerHTML = questions[index].title;
         renderQuestionChoices();
     }
+
+    if (index === questionsIndexLength) {
+        // quizEnd();
+    }
 }
 
 function renderQuestionChoices() {
@@ -60,7 +64,7 @@ function renderQuestionChoices() {
         );
         questionOptionsDiv.append(questionButtons);
     }
-    // quizOver();
+    quizOver();
 };
 function clearQuestionDiv() {
     console.log("About to clear html");
@@ -70,6 +74,9 @@ function clearQuestionDiv() {
 
 function checkAnswer(question, answer) {
 
+
+    // var creatDiv = document.getElementById("divAnswer");
+    //     creatDiv.setAttribute("id", "creatDiv");
     console.log("question: ", question);
     console.log("answer: ", answer);
     let correctAnswer = questions[question].answer;
@@ -88,6 +95,14 @@ function checkAnswer(question, answer) {
     clearQuestionDiv();
     renderQuestions();
 }
+
+    function quizOver() {
+        questionOptionsDiv.innerHTML = "";
+        timerEl.innerHTML = "";
+        creatDiv.textContent = "End of Quiz!" + "" + "Your score is " + score;
+        
+
+    }
     //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
     // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
     // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation

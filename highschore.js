@@ -6,6 +6,7 @@ var scoreForm = document.getElementById("scoreForm");
 var initialText = document.getElementById("initialText");
 var hsList = document.getElementById("hsList");
 var clear = document.getElementById("clear")
+var goBack =  document.getElementById("goBack")
 
 //need to create an empty array to store
 
@@ -82,3 +83,12 @@ hsList.addEventListener("click", function(event) {
     }
   });
   
+  clear.addEventListener("click", function() {
+    localStorage.clear();
+    location.reload();
+
+  })
+
+  goBack.addEventListener("click", function () {
+    window.location.replace("./index.html");
+});
