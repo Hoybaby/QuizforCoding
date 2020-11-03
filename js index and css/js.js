@@ -106,8 +106,18 @@ function checkAnswer(question, answer) {
     function quizOver() {
         questionOptionsDiv.innerHTML = "";
         timerEl.innerHTML = "";
-        creatDiv.textContent = "End of Quiz!" + "" + "Your score is " + score;
+        // creatDiv.textContent = "End of Quiz!" + "" + "Your score is " + score;
+
+        var createH1 = document.createElement("h1");
+        createH1.setAttribute("id", "createH1");
+        createH1.textContent = "All Done!"
         
+        questionOptionsDiv.appendChild(createH1);
+
+        var makeP = document.createElement("p");
+        makeP.setAttribute("id", "makeP");
+
+        questionsDiv.appendChild(createP);
 
     }
     //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
