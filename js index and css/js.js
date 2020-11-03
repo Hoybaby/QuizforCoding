@@ -144,11 +144,17 @@ function quizOver() {
             
             
             clearInterval(quizTime);
-        // var createH1 = document.createElement("h1");
-        // createH1.textContent = "All Done!"
         
-        // createDiv.textcontent = "Quiz is done!" + "" + "You got " + score;
         }
+
+        
+
+
+
+
+
+
+
         // questionOptionsDiv.innerHTML = "";
         // timerEl.innerHTML = "";
         // creatDiv.textContent = "End of Quiz!" + "" + "Your score is " + score;
