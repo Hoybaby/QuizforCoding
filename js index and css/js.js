@@ -1,3 +1,6 @@
+window.onload = function() {
+    console.log("starting")
+};
 //Need to create arrays as shown in class to form questions with objects
 // need objects in my arrays
 //need to create a few buttons and event.listerner(click, function)
@@ -20,12 +23,16 @@ var secondsLeft = 90;
 var score = 0;
 var index = 0;
 var leaderboard;
+var quizTime;
 
 var quiz = document.getElementById("quiz");
 var timerEl = document.getElementById("timer");
 var start = document.getElementById("start");
 var startButton = document.getElementById("startButton");
 var divAnswer = document.getElementById("divAnswer");
+var allDone = document.getElementById("allDone");
+var quizQuestions = document.getElementById("quiz-questions");
+
 
 startButton.addEventListener("click", startQuiz) 
 function startQuiz() {
@@ -36,6 +43,9 @@ function startQuiz() {
     //need to show timer
     setTime();
     renderQuestions();
+    quizTime = setInterval(setTime, 1000);
+
+    
 }
 
 function renderQuestions() {
@@ -45,23 +55,23 @@ function renderQuestions() {
         renderQuestionChoices();
     }
 
-    if (index === questionsIndexLength) {
-        // quizEnd();
-    }
+    // if (index === questionsIndexLength) {
+    quizOver();
+    // }
 }
 
 function renderQuestionChoices() {
     let question = questions[index].choices;
     
-    for (var i = 0; i < questions.length; i++) {
+    for (var options = 0; options < question.length; options++) {
         var questionOptionsDiv = document.getElementById("question-choices");
         var questionButtons = document.createElement("button");
         questionButtons.className ="btn btnOption btn-outline-primary btn-sm d-flex justify-content-around";
-        questionButtons.innerHTML = question[i];
+        questionButtons.innerHTML = question[options];
         //This fires the check answer function when the user clicks a question choices button
         questionButtons.setAttribute(
             "onclick",
-            "checkAnswer(" + index + "," + i + ");"
+            "checkAnswer(" + index + "," + options + ");"
         );
         questionOptionsDiv.append(questionButtons);
     }
@@ -70,6 +80,7 @@ function renderQuestionChoices() {
 function clearQuestionDiv() {
     console.log("About to clear html");
     document.getElementById("question-choices").innerHTML = "";
+    quizOver();
 }
 
 
@@ -94,32 +105,69 @@ function checkAnswer(question, answer) {
         index = index + 1
         secondsLeft = secondsLeft - 15;
     }
-    if (index - 1 >= questions.length) {
-        quizOver();
-        createDiv.textcontent = "Quiz is done!" + "" + "You got " + score;
-    }
     clearQuestionDiv();
     renderQuestions();
+    quizOver();
 }
 
+ function setTime() {
+ // timerID = setInterval(clockTick, 1000);
 
-    function quizOver() {
-        questionOptionsDiv.innerHTML = "";
-        timerEl.innerHTML = "";
+    //timerEl.textContent = secondsLeft + " second left before quez terminates!"
+    // var timerID = setInterval(function() {
+        secondsLeft--; 
+        timerEl.textContent = secondsLeft + " seconds left before quiz ends!";
+
+        if(secondsLeft === -1) {
+            clearInterval(quizTime);
+            sendMessage();
+        }
+    // }, 1000); 
+    console.log(timerEl)
+
+    quizOver();
+};
+
+function sendMessage() {
+if (secondsLeft === 0) {
+    alert("Time is up. Please Try again!")
+    }
+}
+
+function quizOver() {
+        if (index >= 5 || secondsLeft <= 0) {
+            quizQuestions.style.display ="none";
+            quiz.style.display="none";
+            allDone.style.display ="block";
+            
+
+            
+            
+            clearInterval(quizTime);
+        // var createH1 = document.createElement("h1");
+        // createH1.textContent = "All Done!"
+        
+        // createDiv.textcontent = "Quiz is done!" + "" + "You got " + score;
+        }
+        // questionOptionsDiv.innerHTML = "";
+        // timerEl.innerHTML = "";
         // creatDiv.textContent = "End of Quiz!" + "" + "Your score is " + score;
 
-        var createH1 = document.createElement("h1");
-        createH1.setAttribute("id", "createH1");
-        createH1.textContent = "All Done!"
         
-        questionOptionsDiv.appendChild(createH1);
+        // createH1.setAttribute("id", "createH1");
+        
+        // questionOptionsDiv.appendChild(createH1);
 
-        var makeP = document.createElement("p");
-        makeP.setAttribute("id", "makeP");
+        // var makeP = document.createElement("p");
+        // makeP.setAttribute("id", "makeP");
 
-        questionsDiv.appendChild(createP);
+        // questionsDiv.appendChild(createP);
 
     }
+    
+    
+   
+
     //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
     // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
     // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
@@ -167,29 +215,6 @@ function checkAnswer(question, answer) {
 
 // };
 
-function setTime() {
- // timerID = setInterval(clockTick, 1000);
-
-    //timerEl.textContent = secondsLeft + " second left before quez terminates!"
-    var timerID = setInterval(function() {
-        secondsLeft--; 
-        timerEl.textContent = secondsLeft + " seconds left before quiz ends!";
-
-        if(secondsLeft === 0) {
-            clearInterval(timerID);
-            sendMessage();
-        }
-    }, 1000); 
-    console.log(timerEl)
-
-
-};
-
-function sendMessage() {
-if (secondsLeft === 0) {
-    alert("Time is up. Please Try again!")
-    }
-}
 
     // test = init("test")
     // if (index >= questions.length) {
