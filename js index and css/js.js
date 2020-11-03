@@ -25,6 +25,7 @@ var quiz = document.getElementById("quiz");
 var timerEl = document.getElementById("timer");
 var start = document.getElementById("start");
 var startButton = document.getElementById("startButton");
+var divAnswer = document.getElementById("divAnswer");
 
 startButton.addEventListener("click", startQuiz) 
 function startQuiz() {
@@ -84,17 +85,23 @@ function checkAnswer(question, answer) {
     if (userAnswer == correctAnswer) {
         index = index + 1;
         score = score + secondsLeft
-           console.log(score);
-         console.log("Correct");
+        divAnswer.textContent = "Correct"
+        console.log(score);
+        console.log("Correct");
     }
         //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
     else {
         index = index + 1
         secondsLeft = secondsLeft - 15;
     }
+    if (index - 1 >= questions.length) {
+        quizOver();
+        createDiv.textcontent = "Quiz is done!" + "" + "You got " + score;
+    }
     clearQuestionDiv();
     renderQuestions();
 }
+
 
     function quizOver() {
         questionOptionsDiv.innerHTML = "";
