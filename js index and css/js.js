@@ -32,7 +32,7 @@ var startButton = document.getElementById("startButton");
 var divAnswer = document.getElementById("divAnswer");
 var allDone = document.getElementById("allDone");
 var quizQuestions = document.getElementById("quiz-questions");
-
+var congrats = document.getElementById("congrats")
 
 startButton.addEventListener("click", startQuiz) 
 function startQuiz() {
@@ -139,7 +139,7 @@ function quizOver() {
             quizQuestions.style.display ="none";
             quiz.style.display="none";
             allDone.style.display ="block";
-            
+            congrats.textContent = "Congratulations for finishing this quiz! Your score is " + score;
 
             
             
