@@ -33,6 +33,8 @@ var divAnswer = document.getElementById("divAnswer");
 var allDone = document.getElementById("allDone");
 var quizQuestions = document.getElementById("quiz-questions");
 var congrats = document.getElementById("congrats")
+var hsPage = document.getElementById("hsPage");
+
 
 startButton.addEventListener("click", startQuiz) 
 function startQuiz() {
@@ -148,6 +150,9 @@ function quizOver() {
         }
 
         
+hsPage.addEventListener("click", function(){
+    window.location.href = "./highscores.html"
+});
 
 
 

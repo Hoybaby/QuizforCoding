@@ -8,9 +8,15 @@ var hsList = document.getElementById("hsList");
 var clear = document.getElementById("clear")
 var goBack =  document.getElementById("goBack");
 var remove = document.querySelector("#initialText");
-var hsPage = document.getElementById("hsPage")
+var hsPage = document.getElementById("hsPage");
   
+goBack.addEventListener("click", function () {
+    window.location.replace('/js index and css/index.html');
+});
 
+hsPage.addEventListener("click", function(){
+    window.location.replace('/Highscore/highscores.html');
+  });
 //need to create an empty array to store
 
 var highscores = []
@@ -101,10 +107,5 @@ hsList.addEventListener("click", function(event) {
 
   })
 
-  goBack.addEventListener("click", function () {
-    window.location.replace("/index.html");
-});
 
-  hsPage.addEventListener("click", function(){
-    window.location.href = "http://www.w3schools.com"
-});
+ 
