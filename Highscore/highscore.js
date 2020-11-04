@@ -6,7 +6,9 @@ var scoreForm = document.getElementById("scoreForm");
 var initialText = document.getElementById("initialText");
 var hsList = document.getElementById("hsList");
 var clear = document.getElementById("clear")
-var goBack =  document.getElementById("goBack")
+var goBack =  document.getElementById("goBack");
+var remove = document.querySelector("#initialText");
+  
 
 //need to create an empty array to store
 
@@ -77,7 +79,7 @@ hsList.addEventListener("click", function(event) {
     if (element.matches("button") === true) {
       // Get its data-index value and remove the todo element from the list
       var index = element.parentElement.getAttribute("data-index");
-      todos.splice(index, 1);
+      highscores.splice(index, 1);
   
       // Store updated todos in localStorage, re-render the list
       storeScores();
@@ -85,17 +87,16 @@ hsList.addEventListener("click", function(event) {
     }
   });
   
-  function removeItem(item){
-    var itemToRemove = document.getElementById(hsList);
-    itemToRemove.parentNode.removeChild(itemToRemove);
-}
+  
 
   clear.addEventListener("click", function() {
     localStorage.clear();
-    removeItem();
+    // removeItem();
     // highscores = "";
     // location.reload();
     // removeAll();
+    remove.value = '';
+
   })
 
   goBack.addEventListener("click", function () {
