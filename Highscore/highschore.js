@@ -51,11 +51,13 @@ function storeScores() {
 
 
 scoreForm.addEventListener("submit", function(event){
+    console.log('score submit')
     event.preventDefault(); // this preventDefault method cancels the event if it is canceable
 
     var scoreText = initialText.value.trim(); // we are using trim method to do what it says. trim any excess spaces in the input so it doesnt recieve any undesirable answers.
     
     if(scoreText === "") {
+      console.log('returning')
     return;
     }
 
@@ -85,7 +87,6 @@ hsList.addEventListener("click", function(event) {
   
   clear.addEventListener("click", function() {
     localStorage.clear();
-    location.reload();
 
   })
 
