@@ -61,7 +61,7 @@ scoreForm.addEventListener("submit", function(event){
     return;
     }
 
-    // Add new todoText to todos array, clear the input
+    // Add new  to todos array, clear the input
   highscores.push(scoreText);
   scoreForm.value = "";
 
@@ -85,9 +85,17 @@ hsList.addEventListener("click", function(event) {
     }
   });
   
+  function removeItem(item){
+    var itemToRemove = document.getElementById(hsList);
+    itemToRemove.parentNode.removeChild(itemToRemove);
+}
+
   clear.addEventListener("click", function() {
     localStorage.clear();
-
+    removeItem();
+    // highscores = "";
+    // location.reload();
+    // removeAll();
   })
 
   goBack.addEventListener("click", function () {
