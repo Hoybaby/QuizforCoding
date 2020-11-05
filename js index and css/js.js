@@ -85,6 +85,9 @@ function clearQuestionDiv() {
     quizOver();
 }
 
+function clearAnswerDiv() {
+    divAnswer.innerHTML = "";
+}
 
 function checkAnswer(question, answer) {
 
@@ -99,6 +102,7 @@ function checkAnswer(question, answer) {
         index = index + 1;
         score = score + secondsLeft
         divAnswer.textContent = "Correct"
+        
         console.log(score);
         console.log("Correct");
     }
@@ -106,7 +110,9 @@ function checkAnswer(question, answer) {
     else {
         index = index + 1
         secondsLeft = secondsLeft - 15;
+        divAnswer.textContent = "Wrong!"
     }
+    // clearAnswerDiv();
     clearQuestionDiv();
     renderQuestions();
     quizOver();
@@ -150,12 +156,13 @@ function quizOver() {
         }
 
         
-hsPage.addEventListener("click", function(){
-    window.location.href = "./highscores.html"
+hsPage.addEventListener('click', function () {
+  window.location.replace('highscores.html');
 });
 
-
-
+goBack.addEventListener('click', function () {
+    window.location.replace('index.html');
+  });
 
 
 

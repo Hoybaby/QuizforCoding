@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../js index and css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="blue center">
     <div class="highscore">
         <h1> Highscores!!!   </h1>
         <form id="scoreForm" method = "POST">
-            <label for="scoreText">Highscores!!!</label>
+            <label id="finalScore" for="scoreText"></label>
             <input type="text" placeholder="Please put your Initials to record score" name="intialText" id="initialText"> <button id="clear">Clear results</button>
         </form>
-        <ul id="hsList"></ul>
+        <ul class="center" id="hsList"></ul>
     </div>
     <div>
+       
         <button id="goBack">Go Back</button>
-
+        
     </div>
 
 

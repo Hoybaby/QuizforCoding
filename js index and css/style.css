@@ -5,3 +5,11 @@
 .blue {
     background-color: rgb(68, 226, 218);
 }
+
+.row {
+    text-align:center;
+}
+ul {
+    text-align: center;
+    list-style-position: inside;
+}
