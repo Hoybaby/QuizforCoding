@@ -3,11 +3,11 @@
 //use activity 28 as a guide if lost
 
 var scoreForm = document.getElementById('scoreForm');
-var initialText = document.getElementById('initialText');
+var initialInput = document.getElementById('initialInput');
 var hsList = document.getElementById('hsList');
 var clear = document.getElementById('clear');
 var goBack = document.getElementById('goBack');
-var remove = document.querySelector('#initialText');
+var remove = document.querySelector('#initialInput');
 var hsPage = document.getElementById('hsPage');
 // var finalScore = document.getElementById("finalScore")
 
@@ -57,7 +57,7 @@ scoreForm.addEventListener('submit', function (event) {
   console.log('score submit');
   event.preventDefault(); // this preventDefault method cancels the event if it is canceable
 
-  var scoreText = initialText.value.trim(); // we are using trim method to do what it says. trim any excess spaces in the input so it doesnt recieve any undesirable answers.
+  var scoreText = initialInput.value.trim(); // we are using trim method to do what it says. trim any excess spaces in the input so it doesnt recieve any undesirable answers.
 
   if (scoreText === '') {
     console.log('returning');
@@ -98,6 +98,19 @@ clear.addEventListener('click', function() {
 goBack.addEventListener('click', function () {
   window.location.replace('index.html');
 });
+
+var highScoreArray = [];
+    
+    var getInitials = initialInput.value
+
+    highScoreArray.JSON.parse(localStorage.getItem("highScores"))
+
+    var localStorageArray = {score: userScore, initials: getInitials}
+
+    var highScores = getInitials + ": " + userScore;
+
+    hsList.append(highScores);
+
 
 // hsPage.addEventListener('click', function () {
 //   window.location.replace('highscores.html');

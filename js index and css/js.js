@@ -20,7 +20,7 @@ window.onload = function() {
 
 var secondsLeft = 90;
 
-var score = 0;
+var userScore = 0;
 var index = 0;
 var leaderboard;
 var quizTime;
@@ -100,10 +100,10 @@ function checkAnswer(question, answer) {
     let userAnswer = questions[question].choices[answer];
     if (userAnswer == correctAnswer) {
         index = index + 1;
-        score = score + secondsLeft
+        userScore = userScore + secondsLeft
         divAnswer.textContent = "Correct"
         
-        console.log(score);
+        console.log(userScore);
         console.log("Correct");
     }
         //Whether they get the right or wrong answer, the program continues to the next question and then deducts 15 seconds from the quiz
@@ -164,7 +164,20 @@ goBack.addEventListener('click', function () {
     window.location.replace('index.html');
   });
 
+}
+//storage to store scores
 
+    var highScoreArray = [];
+    
+    var getInitials = initialInput.value
+
+    highScoreArray.JSON.parse(localStorage.getItem("highScores"))
+
+    var localStorageArray = {score: userScore, initials: getInitials}
+
+    var highScores = getInitials + ": " + userScore;
+
+    hsList.append(highScores);
 
 
         // questionOptionsDiv.innerHTML = "";
@@ -181,7 +194,7 @@ goBack.addEventListener('click', function () {
 
         // questionsDiv.appendChild(createP);
 
-    }
+    
     
     
    
