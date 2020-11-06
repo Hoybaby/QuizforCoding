@@ -147,7 +147,8 @@ function quizOver() {
             quizQuestions.style.display ="none";
             quiz.style.display="none";
             allDone.style.display ="block";
-            congrats.textContent = "Congratulations for finishing this quiz! Your score is " + score;
+            var score =localStorage.get(userScore)
+            congrats.textContent = "Congratulations for finishing this quiz! Your score is " + userScore;
 
             
             
@@ -167,17 +168,17 @@ goBack.addEventListener('click', function () {
 }
 //storage to store scores
 
-    var highScoreArray = [];
+    // var highScoreArray = [];
     
-    var getInitials = initialInput.value
+    // var getInitials = initialInput.value
 
-    highScoreArray.JSON.parse(localStorage.getItem("highScores"))
+    // highScoreArray.JSON.parse(localStorage.getItem("highScores"))
 
-    var localStorageArray = {score: userScore, initials: getInitials}
+    // var localStorageArray = {score: userScore, initials: getInitials}
 
-    var highScores = getInitials + ": " + userScore;
+    // var highScores = getInitials + ": " + userScore;
 
-    hsList.append(highScores);
+    // hsList.append(highScores);
 
 
         // questionOptionsDiv.innerHTML = "";
