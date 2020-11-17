@@ -103,10 +103,11 @@ var highScoreArray = [];
     
     var getInitials = initialInput.value
 
-    highScoreArray.JSON.parse(localStorage.getItem("highScores"))
+    highScoreArray = JSON.parse(localStorage.getItem("highScores"))
 
     var localStorageArray = {score: userScore, initials: getInitials}
     highScoreArray.push(localStorageArray);
+    localStorage.setItem("highScores", JSON.stringify(highScoreArray))
 
     var highScores = getInitials + ": " + userScore;
 

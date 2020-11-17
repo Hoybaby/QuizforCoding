@@ -147,7 +147,7 @@ function quizOver() {
             quizQuestions.style.display ="none";
             quiz.style.display="none";
             allDone.style.display ="block";
-            var score =localStorage.get(userScore)
+            // var score =localStorage.get(userScore)
             congrats.textContent = "Congratulations for finishing this quiz! Your score is " + userScore;
 
             
