@@ -16,11 +16,11 @@
         <li>First was to create html and place the skelton of application. A location is needed for timer and to hold the questions</li>
         <li>After the html skeleton was made, a Javascript file had to be created and make a function for a timer. An event listener is required for
         button Start Quiz which will intiate the quiz and the timer.</li>
-        <li>One can not take a quiz without questions. I seperated questions into a seperate JS file to organize code effectively. I did not have to
-        50 lines of code for questions on the same JS file as the timer and other functions. I can simply pull from the questions anytime.</li>
-        <li>On the js.js file, variables are needed for the important segments of the quiz such as score and value for a timer to countdown from. Had to assign
-        values to variables with IDs to </li>
-        <li></li>
-        <li></li>
+        <li>One can not take a quiz without questions. I created questions into a seperate JS file to organize code effectively. Having
+        50 lines of code for questions on the same JS file as the timer and other functions is not neat. I can simply pull from the questions anytime.</li>
+        <li>On the js.js file, variables are needed for the important segments of the quiz on the html such as score and value for a timer.</li>
+        <li>When varibales are established, functions are then needed to display, check the answers and rotate the questions via user input</li>
+        <li>How I displayed the questions was having a specific div that would contain the class "display: none". When the parameters is correct, it will
+        remove this "display: none" and put a "display: block"</li>
     </ol>
 
