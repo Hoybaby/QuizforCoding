@@ -25,7 +25,6 @@
         <li>The process above is the same for when the quiz is done. The questions will be hidden with "display: none" and the final screen will be shown with 
         your score and button to input your leaderboard.</li>
         <li>The leaderboard html stores the intials from the user input into local storage and then retrieved when placed in the list.</li>
-        <li></li>
     </ol>
 
 

@@ -34,7 +34,8 @@ var allDone = document.getElementById("allDone");
 var quizQuestions = document.getElementById("quiz-questions");
 var congrats = document.getElementById("congrats")
 var hsPage = document.getElementById("hsPage");
-
+var scoreForm = document.getElementById('scoreForm');
+var hsList = document.getElementById('hsList');
 
 startButton.addEventListener("click", startQuiz) 
 function startQuiz() {
@@ -131,7 +132,7 @@ function checkAnswer(question, answer) {
             sendMessage();
         }
     // }, 1000); 
-    console.log(timerEl)
+    // console.log(timerEl)
 
     quizOver();
 };
@@ -161,45 +162,67 @@ hsPage.addEventListener('click', function () {
   window.location.replace('highscores.html');
 });
 
-goBack.addEventListener('click', function () {
-    window.location.replace('index.html');
-  });
+// goBack.addEventListener('click', function () {
+//     window.location.replace('index.html');
+//   });
 
 }
-//storage to store scores
+// storage to store scores
+ var initialInput = document.getElementById('initialInput');
+ console.log(initialInput);
 
-    // var highScoreArray = [];
+ 
+function renderScores() {
+    var highScore = JSON.parse(localStorage.getItem("highScore")) || [];
+    //grab the list to make a string
+    // hsList.innerHTML = '';
+    //making a loop to prevent repeating code and same functionalilty on a page
+    // for (var i = 0; i < highScore.length; i++) {
+      // var scores = highScore[i];
+      highScore.forEach(function(score) {
+        var li = document.createElement('li');
+        li.textContent = score.score + score.initials;
+        // li.setAttribute('data-index', i);
     
-    // var getInitials = initialInput.value
+        hsList.append(li);
+      });
+    //   var li = document.createElement('li');
+    //   li.textContent = score + initials;
+    //   li.setAttribute('data-index', i);
+  
+    //   hsList.append(li);
+    // }
+  }
+  
+  renderScores();
+  
 
-    // highScoreArray.JSON.parse(localStorage.getItem("highScores"))
+function saveScore () {
 
-    // var localStorageArray = {score: userScore, initials: getInitials}
+    // var highScore = [];
+    
+    var getInitials = initialInput.value
+
+    var highScore = JSON.parse(localStorage.getItem("highScore")) || [];
+
+    var localStorageArray = {score: userScore, initials: getInitials}
+
+    highScore.push(localStorageArray)
+
+    window.localStorage.setItem("highscore", JSON.stringify(highScore))
 
     // var highScores = getInitials + ": " + userScore;
 
-    // hsList.append(highScores);
+    // hsList.append(highScore);
+}
 
+function enter(event) {
+    if (event.key === "Enter") {
+        saveScore();
+    }
+}
 
-        // questionOptionsDiv.innerHTML = "";
-        // timerEl.innerHTML = "";
-        // creatDiv.textContent = "End of Quiz!" + "" + "Your score is " + score;
-
-        
-        // createH1.setAttribute("id", "createH1");
-        
-        // questionOptionsDiv.appendChild(createH1);
-
-        // var makeP = document.createElement("p");
-        // makeP.setAttribute("id", "makeP");
-
-        // questionsDiv.appendChild(createP);
-
-    
-    
-    
-   
-
+scoreForm.onclick = saveScore;
     //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
     // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
     // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
