@@ -22,5 +22,9 @@
         <li>When varibales are established, functions are then needed to display, check the answers and rotate the questions via user input</li>
         <li>How I displayed the questions was having a specific div that would contain the class "display: none". When the parameters is correct, it will
         remove this "display: none" and put a "display: block"</li>
+        <li>The process above is the same for when the quiz is done. The questions will be hidden with "display: none" and the final screen will be shown with 
+        your score and button to input your leaderboard.</li>
+        <li>The leaderboard html stores the intials from the user input into local storage and then retrieved when placed in the list.</li>
+        <li></li>
     </ol>
 
