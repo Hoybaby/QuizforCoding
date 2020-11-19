@@ -28,3 +28,9 @@
         <li></li>
     </ol>
 
+
+<h4>Acknowledgements</h4>
+    <ul>
+        <li>Mazin Abed, my tutor</li>
+        <li> Manoli, my TA</li>
+    </ul>
