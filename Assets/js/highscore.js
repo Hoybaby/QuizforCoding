@@ -19,113 +19,35 @@
 // init();
 // // need to create a function to render the scores saved
 
+
 function renderScores() {
-  var highScore = JSON.parse(localStorage.getItem("highScore")) || [];
-  //grab the list to make a string
-  // hsList.innerHTML = '';
-  //making a loop to prevent repeating code and same functionalilty on a page
-  // for (var i = 0; i < highScore.length; i++) {
-    // var scores = highScore[i];
+  var highScore = JSON.parse(localStorage.getItem("highscore")) || [];
+
+  highScore.sort(function(a, b) {
+  return b.score - a.score;
+});
+
   highScore.forEach(function(score) {
     var li = document.createElement('li');
-    li.textContent = score.score + score.initials;
-    // li.setAttribute('data-index', i);
+    li.textContent = score.score + " : " + score.initials;
+    var El = document.getElementById("hsList")
 
-    hsList.append(li);
+   El.append(li);
   });
 }
 
 renderScores();
 
-// function init() {
-//   // to get stored highscores from the array we create we need to parsing the JSON string to an object
-//   var storedScores = JSON.parse(localStorage.getItem('highscores'));
-//   // the JSON.parse() methos parses a JSON string, constructing the JS value or object by the string
-
-//   if (storedScores !== null) {
-//     highscores = storedScores;
-//   }
-//   renderScores();
-// }
 
 
-// function storeScores() {
-//   //with this function i will stringift and set the highscores key in local storage to highscores array
-//   localStorage.setItem('highscores', JSON.stringify(highscores));
-// }
+clear.addEventListener('click', function() {
 
-// //as of now before this code. we have no way of calling it so we need to add event listener to the button I made on the html to tie to all together
-
-// scoreForm.addEventListener('submit', function (event) {
-//   console.log('score submit');
-//   event.preventDefault(); // this preventDefault method cancels the event if it is canceable
-
-//   var scoreText = initialInput.value.trim(); // we are using trim method to do what it says. trim any excess spaces in the input so it doesnt recieve any undesirable answers.
-
-//   if (scoreText === '') {
-//     console.log('returning');
-//     return;
-//   }
-
-//   // Add new  to highscore array, clear the input
-//   highscores.push(scoreText);
-//   scoreForm.value = '';
-
-//   storeScores();
-//   renderScores();
-// });
-
-// hsList.addEventListener('click', function (event) {
-//   var element = event.target;
-
-//   // If that element is a button...
-//   if (element.matches('button') === true) {
-//     // Get its data-index value and remove the todo element from the list
-//     var index = element.parentElement.getAttribute('data-index');
-//     highscores.splice(index, 1);
-
-//     // Store updated todos in localStorage, re-render the list
-//     storeScores();
-//     renderScores();
-//   }
-// });
-
-
-// clear.addEventListener('click', function() {
-
-//   localStorage.clear();
-//   location.reload();
+  localStorage.clear();
+  location.reload();
  
-// });
+});
 
-// goBack.addEventListener('click', function () {
-//   window.location.replace('index.html');
-// });
+goBack.addEventListener('click', function () {
+  window.location.replace('index.html');
+});
 
-// var highScoreArray = [];
-    
-//     var getInitials = initialInput.value
-
-//     highScoreArray = JSON.parse(localStorage.getItem("highScores"))
-
-//     var localStorageArray = {score: userScore, initials: getInitials}
-//     highScoreArray.push(localStorageArray);
-//     localStorage.setItem("highScores", JSON.stringify(highScoreArray))
-
-//     var highScores = getInitials + ": " + userScore;
-
-//     hsList.append(highScores);
-
-
-// hsPage.addEventListener('click', function () {
-//   window.location.replace('highscores.html');
-// });
-
-// function run(){
-
-//   var URL = "/js index and css/index.html";
-
-//   window.open(URL, null);
-
-// }
-// run();

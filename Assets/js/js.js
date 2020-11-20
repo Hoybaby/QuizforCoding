@@ -199,13 +199,17 @@ function renderScores() {
 
 function saveScore () {
 
-    // var highScore = [];
-    
-    var getInitials = initialInput.value
+    // var highScore = []
+       
+    var getInitials = initialInput.value.trim();
 
-    var highScore = JSON.parse(localStorage.getItem("highScore")) || [];
+    var highScore = JSON.parse(localStorage.getItem("highscore")) || [];
 
-    var localStorageArray = {score: userScore, initials: getInitials}
+    var localStorageArray = {
+        score: userScore, 
+        initials: getInitials
+    }
+
 
     highScore.push(localStorageArray)
 
@@ -223,99 +227,4 @@ function enter(event) {
 }
 
 scoreForm.onclick = saveScore;
-    //to ease dubugging. this variable is pulling the value from questions of question.js(my actual questions)
-    // const container = document.getElementById("questionContainer"); //this is just a holder. a place we are going to stick each question we build. later going to iterate cycling the questions into this container
-    // const questionEl = renderQuestion(question.title, question.choices, question.answer); //renamed variable for better clarifcation
-    // container.appendChild(questionEl) //we appeneded
-    // init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
-//         questions = questions[index][0];
-//   };
-
-// };
-//renderquestion is reponsible for creating for building html rep of a question
-// function renderQuestion(title, choices, answer) {
-//     const template = document.getElementById("test");
-//     const question = template.cloneNode(true);
-//     question.style.display = "block";
-//     question.removeAttribute("id");
-//     // labeling all variables const because they are not being reassigned. better practice to rename them const then variable. start sooner naming
-//     const titleEl = question.getElementsByTagName("h1")[0];
-//     titleEl.innerHTML = title;
-
-//     const choicesEl = question.getElementsByTagName("ol")[0];
-    
-//     choices.forEach(function(choice) {          //the forEach is a loop
-//         const li = document.createElement("li")
-//         li.innerHTML = choice       // we created a new li element, we modified its text and now we will append
-//         li.addEventListener("click", function(evt) {
-//             // console.log("choice was clicked", choice)
-//             if (choice === answer) {
-//                 alert("correct");
-//                 score++;
-//                 index = index +1
-//                 // const question = questions[1]
-//                 // const questionEl = renderQuestion(question.title, question.choices, question.answer)
-                
-//             } else {
-//                     alert('wrong');
-//                 }
-            
-//         })
-//         choicesEl.appendChild(li) 
-//         // clearTest();
-//         // renderQuestion();
-//     })
-//     console.log(question)
-//     return question;
-
-// };
-
-
-    // test = init("test")
-    // if (index >= questions.length) {
-    //     test.innerHTML = "<h2> Your score is " + correct + "of" + questions.length + ".</h2>";
-    //     init("renderQuestions").innerHTML = "All Done";
-    //     var index = 0;
-    //     var correct = 0;
-    //     return false
-    //     //any iinenr html needs equals
-    // }
-    
-//Have to figure out how to rotate questions through.
-// assign point values to right answers
-// keep score
-// make highscore html page work right with local storage
-//need 4th variable in renderquestion as a call back function
-
-
-
-//have to figure out where ti place this 
-// init("renderQuestions").innerHTML = "questions " + (index + 1) + " of" + questions.length;
-//         questions = questions[index][0];
-    // we are clone the whole test id/question template so we dont have to copy and paste it over and over. Keeping it dry
-    // remove the id to avoid collison later
-    // remove style display none cloned element 
-    // want to update h1 element text value with a title
-    // add a child per question as an li inside the ol. will be using appendChild
-    
-
-
-    
-    
-
-    //we are plus one because we want to show a new index which is all teh qesutiosmn
-
-    //we ned to create a atest id . wneed to di <div id= test"
-    //we need to show the questions by id
-
-    // we need to put diplays the questions
-    // for (var i = 0; i < questions.length; i++) {
-    //     var answers = prompt(questions[i].q)
-    //     console.log(answers);
    
-    //     if (answers === questions[i].a) {
-    //         alert("Correct!");
-    //     } else {
-    //         alert("Wrong!");
-    //     }
-    // };
