@@ -28,6 +28,12 @@
     </ol>
 
 
+
+<h4>Image of Application</h4>
+
+![Code Quiz](https://user-images.githubusercontent.com/70716786/99932589-8b0fae80-2d26-11eb-90d4-5bed27ea65af.PNG)
+
+
 <h4>Acknowledgements</h4>
     <ul>
         <li>Mazin Abed, my tutor</li>
